@@ -127,6 +127,8 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+gym_venv/
+env_3_7_16/
 
 # Spyder project settings
 .spyderproject
