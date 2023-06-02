@@ -4,6 +4,10 @@ class NeuralNet:
     '''A simple neural network with a hidden layer. ReLU activation
     and classifies with softmax.'''
     def __init__(self, W1, b1, W2, b2):
+        '''`self.dims = (M, D, C)` stores the layers' dimensions
+        `self.params` will store all the weights
+        W1 = (M, D), b1 = (D)
+        W2 = (D, C), b2 = (C)'''
         # input_dim, hidden_dim, output_dim
         self.dims = *W1.shape, *b2.shape
         self.params = {
@@ -14,12 +18,7 @@ class NeuralNet:
     def create_random(input_dim: int, hidden_dim: int, output_dim: int,
                  weight_scale=1):
         '''Weight matrices are initialized from a normal distribution
-        scaled by `weight_scale`. Biases are set to zero.
-        
-        `self.dims = (M, D, C)` stores the layers' dimensions
-        `self.params` will store all the weights
-        W1 = (M, D), b1 = (D)
-        W2 = (D, C), b2 = (C)'''
+        scaled by `weight_scale`. Biases are set to zero.'''
         W1 = np.random.normal(0, weight_scale, (input_dim, hidden_dim))
         b1 = np.zeros(hidden_dim)
 
