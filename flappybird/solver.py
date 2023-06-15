@@ -7,15 +7,16 @@ class Solver:
     
     def solve(self, feature_map: callable, hidden_dim: int, mutation_scale=1e-2,
               population_size: int=10, generations: int=10, reward=Reward,
-              verbose=False):
+              initial_pop: int=None, verbose=False):
         '''`feature_map` maps obs to a np.array`'''
         input_dim = len(feature_map((0, 0)))
         output_dim = 1
 
         # initialize population
+        initial_pop = initial_pop or population_size
         population = [
             NeuralNet.create_random(input_dim, hidden_dim, output_dim)
-            for _ in range(population_size)
+            for _ in range(initial_pop)
         ]
 
         data = []
